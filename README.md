@@ -22,11 +22,14 @@ To run Python GUI make sure you have the latest python version and tkinter insta
 3. brew install python-tk
 4. python3 gui.py        
 
-Th
+
 
 Again Make Sure you run IconicTech.c before running the Python GUI. 
+
 The reason is that when connecting Python to C 
+
 "./Main" is the file being passed not the C file.
+
 
 
 The Python GUI unfortunately is not highly functional, it shows the 10 Queries but when you click it, runs the C program in terminal and if you want to run the queries you have to do it the same way as the C program by typing in the terminal.
