@@ -35,3 +35,6 @@ The reason is that when connecting Python to C
 The Python GUI unfortunately is not highly functional, it shows the 10 Queries but when you click it, runs the C program in terminal and if you want to run the queries you have to do it the same way as the C program by typing in the terminal.
 
 That's why I will be converting C to Python to remove that connection step and directly access the database from the GUI.
+
+
+Due to issues connecting C with Python, I will be translating the program to Python and MySql
