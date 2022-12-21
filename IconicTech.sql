@@ -53,7 +53,7 @@ CREATE TABLE Employee (
   Id INT PRIMARY KEY AUTO_INCREMENT,
   FirstName VARCHAR(255) NOT NULL,
   LastName VARCHAR(255) NOT NULL,
-  PhoneNumber INT NOT NULL,
+  PhoneNumber BIGINT NOT NULL,
   UNIQUE(FirstName, LastName)
 );
 
@@ -70,7 +70,7 @@ CREATE TABLE Customer (
   Id INT PRIMARY KEY AUTO_INCREMENT,
   FirstName VARCHAR(255) NOT NULL,
   LastName VARCHAR(255) NOT NULL,
-  PhoneNumber INT NOT NULL,
+  PhoneNumber BIGINT NOT NULL,
   Email VARCHAR(255),
   UNIQUE(FirstName, PhoneNumber)
 );
@@ -88,7 +88,7 @@ INSERT INTO Customer VALUES(10,'Samuel','Lowe',8905328753,'Samuel@gmail.com');
 
 CREATE TABLE StoreTransaction(
 Id INTEGER PRIMARY KEY AUTO_INCREMENT,
-RecieptNumber INTEGER NOT NULL,
+RecieptNumber BIGINT NOT NULL,
 PaymentMethod VARCHAR(255) NOT NULL,
 Day INTEGER NOT NULL,
 Month INTEGER NOT NULL,
@@ -113,6 +113,7 @@ INSERT INTO StoreTransaction VALUES(8,3069239620,'Cash',2,10,2022,7,1,8);
 INSERT INTO StoreTransaction VALUES(9,513367041,'Cash',2,10,2022,8,1,9);
 INSERT INTO StoreTransaction VALUES(10,798266927,'Cash',2,10,2022,9,1,10);
 
+
 CREATE TABLE EmployeeDoesService (
   Id INT PRIMARY KEY AUTO_INCREMENT,
   EmployeeId INT NOT NULL,
@@ -131,14 +132,6 @@ INSERT INTO EmployeeDoesService VALUES(3,3,4,1,10,2022,NULL);
 INSERT INTO EmployeeDoesService VALUES(4,5,5,12,10,2022,NULL);
 INSERT INTO EmployeeDoesService VALUES(5,3,6,2,10,2022,NULL);
 
-TRUNCATE TABLE sqlite_sequence;
-INSERT INTO sqlite_sequence VALUES('Offer',10);
-INSERT INTO sqlite_sequence VALUES('Product',8);
-INSERT INTO sqlite_sequence VALUES('Service',6);
-INSERT INTO sqlite_sequence VALUES('Employee',8);
-INSERT INTO sqlite_sequence VALUES('Customer',10);
-INSERT INTO sqlite_sequence VALUES('StoreTransaction',10);
-INSERT INTO sqlite_sequence VALUES('EmployeeDoesService',5);
 
 COMMIT;
 SET foreign_key_checks = 1;

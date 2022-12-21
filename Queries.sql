@@ -18,13 +18,14 @@ EmployeeName  num_occurrences
 ------------  ---------------
 Michael Bray  3   
 */
-SELECT Employee.FirstName || ' ' || Employee.LastName AS EmployeeName,  
+SELECT CONCAT(Employee.FirstName, ' ', Employee.LastName) AS EmployeeName,  
 COUNT(EmployeeDoesService.EmployeeId) AS DevicesFixed  
 FROM EmployeeDoesService   
 JOIN Employee ON EmployeeDoesService.EmployeeId = Employee.Id  
 GROUP BY EmployeeDoesService.EmployeeId  
 ORDER BY DevicesFixed DESC  
-LIMIT 1;  
+LIMIT 1 OFFSET 0;
+
 
 /*
 3rd Query: Show Employee’s Total Profit 
@@ -35,11 +36,12 @@ EmployeeName   TotalProfit
 Stephen Diaz   71         
 William Tanka  125 
 */
-SELECT Employee.FirstName || ' ' || Employee.LastName AS EmployeeName, SUM(Offer.Price - Offer.Cost) AS TotalProfit
+SELECT CONCAT(Employee.FirstName, ' ', Employee.LastName) AS EmployeeName, SUM(Offer.Price - Offer.Cost) AS TotalProfit
 FROM Offer
-INNER JOIN StoreTransaction ON Offer.Id = StoreTransaction.OfferId
-INNER JOIN Employee ON Employee.Id = StoreTransaction.EmployeeId
+JOIN StoreTransaction ON Offer.Id = StoreTransaction.OfferId
+JOIN Employee ON Employee.Id = StoreTransaction.EmployeeId
 GROUP BY EmployeeName;
+
 
 /*
 4th Query: Find The Customer that shops the most
@@ -49,12 +51,13 @@ CustomerId  FullName  NumReciepts
 ----------  --------  -----------
 1           Shan Su   2          
 */
-SELECT Customer.FirstName || ' ' || Customer.LastName as FullName, COUNT(*) as TimesShopped
+SELECT CONCAT(Customer.FirstName, ' ', Customer.LastName) as FullName, COUNT(*) as TimesShopped
 FROM StoreTransaction 
 JOIN Customer ON Customer.Id = StoreTransaction.CustomerId
 GROUP BY StoreTransaction.CustomerId
 ORDER BY TimesShopped DESC
-LIMIT 1;
+LIMIT 1 OFFSET 0;
+
 
 
 
@@ -109,10 +112,11 @@ Liban Guled
 John Doe                               
 Max Jane         
 */
-SELECT e.FirstName || ' ' || e.LastName AS 'Employees That Never Did a Service Task'
+SELECT CONCAT(e.FirstName, ' ', e.LastName) AS 'Employees That Never Did a Service Task'
 FROM Employee e
 LEFT JOIN EmployeeDoesService eds ON eds.EmployeeId = e.Id
 WHERE eds.EmployeeId IS NULL;
+
 
 
 /*
@@ -127,7 +131,7 @@ Margie Montano  Margie@gmail.com
 Tom Norman      Tom@gmail.com   
 Samuel Lowe     Samuel@gmail.com      
 */
-SELECT FirstName || ' ' || LastName AS 'Full Name', Email
+SELECT CONCAT(FirstName, ' ', LastName) AS 'Full Name', Email
 FROM Customer
 WHERE Email IS NOT NULL;
 
