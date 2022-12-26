@@ -3,7 +3,7 @@ import mysql.connector
 
 # Read the configuration file
 config = configparser.ConfigParser()
-config.read("config.ini")
+config.read("Pl/config.ini")
 
 # Get the MySQL connection details from the configuration file
 mysql_config = config["mysql"]
