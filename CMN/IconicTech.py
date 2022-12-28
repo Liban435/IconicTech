@@ -197,4 +197,4 @@ while True:
 # Close the database connection
 db.close()
 # Print a message to indicate that the program has ended
-print("\nGoodbye! Thank you for using the Iconic Tech application.")
+print("\nGoodbye! Thank you for using thee Iconic Tech application.")
